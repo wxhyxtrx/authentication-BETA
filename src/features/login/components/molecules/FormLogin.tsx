@@ -9,8 +9,7 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginValidationSchema } from '../../schemas/defaultLoginSchema'
 
-
-export const FormLogin = ({ onSubmit, values, onChange, className, schemaValidation }: TLoginFormProps) => {
+export const FormLogin = ({ onSubmit, values, onChange, className, schemaValidation, classNameForgot, actionForgotPassword }: TLoginFormProps) => {
     const form = useForm({
         resolver: yupResolver(schemaValidation as any ?? loginValidationSchema),
         defaultValues: values,
@@ -62,28 +61,33 @@ export const FormLogin = ({ onSubmit, values, onChange, className, schemaValidat
                         </FormItem>
                     )}
                 />
-                <FormField
-                    control={form.control}
-                    name="remember"
-                    render={({ field }) => (
-                        <FormItem className="flex items-center justify-between">
-                            <div className="flex items-center gap-2">
-                                <FormControl>
-                                    <Checkbox
-                                        checked={field.value}
-                                        onCheckedChange={(e) => {
-                                            field.onChange(e)
-                                            onChange({ target: { name: 'remember', value: e } } as any)
-                                        }}
-                                    />
-                                </FormControl>
-                                <FormLabel className="text-sm">Remember me</FormLabel>
-                            </div>
-                        </FormItem>
-                    )}
-                />
+                <div className=' flex flex-wrap justify-between items-center gap-3'>
+                    <FormField
+                        control={form.control}
+                        name="remember"
+                        render={({ field }) => (
+                            <FormItem className="flex items-center justify-between">
+                                <div className="flex items-center gap-2">
+                                    <FormControl>
+                                        <Checkbox
+                                            checked={field.value}
+                                            onCheckedChange={(e) => {
+                                                field.onChange(e)
+                                                onChange({ target: { name: 'remember', value: e } } as any)
+                                            }}
+                                        />
+                                    </FormControl>
+                                    <FormLabel className="text-sm">Remember me</FormLabel>
+                                </div>
+                            </FormItem>
+                        )}
+                    />
+                    <div>
+                        <div onClick={actionForgotPassword} className={cn("text-sm cursor-pointer hover:underline underline-offset-2 text-primary",classNameForgot)}>Forgot password?</div>
+                    </div>
+                </div>
 
-                <Button type='button' onClick={onSubmit} className='w-full'>Login</Button>
+                <Button type='button' onClick={onSubmit} className='w-full'>Sign in</Button>
             </form>
         </Form>
     )

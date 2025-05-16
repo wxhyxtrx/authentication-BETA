@@ -9,19 +9,27 @@ export default function LoginSection({
     variant = "center",
     title = "Welcome Back",
     description = "Please sign in to continue",
+    className = "",
+    content,
+    classNameContent = "",
+    contentActionRegister,
+    actionRegister,
+    actionForgot,
+    classNameForgot = "",
+    actionSignIn = () => { },
 }: LoginSectionProps) {
-    const { formLogin, handleChange, handleSubmit } = useLoginForm()
+    const { formLogin, handleChange } = useLoginForm()
     const isSplit = variant === "split-left" || variant === "split-right";
 
     return (
-        <section className={cn("min-h-screen flex", {
+        <section className={cn("min-h-screen flex", className, {
             "justify-center items-center": variant === "center",
             "flex-row": variant === "split-left",
             "flex-row-reverse": variant === "split-right",
         })}>
             {isSplit && (
-                <div className="w-1/2 bg-muted flex items-center justify-center">
-                    <h1 className="text-3xl font-bold text-center">🎮 Login Module</h1>
+                <div className={cn("max-w-1/2 w-full min-w-1/2", classNameContent)}>
+                    {content}
                 </div>
             )}
 
@@ -31,7 +39,15 @@ export default function LoginSection({
                         <h2 className="text-2xl font-bold">{title}</h2>
                         <p className="mb-6 text-muted-foreground">{description}</p>
                     </div>
-                    <FormLogin onChange={handleChange} onSubmit={handleSubmit} values={formLogin} className="" />
+                    <FormLogin onChange={handleChange} onSubmit={actionSignIn} values={formLogin} className="" actionForgotPassword={actionForgot} classNameForgot={classNameForgot} />
+                    <div className="text-center px-5">
+                        {contentActionRegister ?? (
+                            <p className="text-sm text-muted-foreground">
+                                Don&apos;t have an account?{" "}
+                                <span onClick={actionRegister} className="text-black font-medium hover:underline underline-offset-2 cursor-pointer">Sign up</span>
+                            </p>
+                        )}
+                    </div>
                 </div>
             </div>
         </section>

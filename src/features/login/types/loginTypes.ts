@@ -1,4 +1,5 @@
-import { Schema } from 'yup';
+import type React from "react";
+import { Schema } from "yup";
 
 export interface ILoginFormValues {
   email: string;
@@ -17,6 +18,8 @@ export type TLoginFormProps = {
   values: ILoginFormValues;
   className?: string;
   schemaValidation?: Schema<ILoginFormValues>;
+  classNameForgot?: string;
+  actionForgotPassword?: () => void;
 };
 
 export interface IUseLoginForm {
@@ -31,4 +34,12 @@ export interface LoginSectionProps {
   variant?: LoginLayoutVariant;
   title?: string;
   description?: string;
+  content?: React.ReactNode;
+  className?: string;
+  classNameContent?: string;
+  contentActionRegister?: React.ReactNode | string;
+  actionRegister?: () => void;
+  classNameForgot?: string;
+  actionForgot?: () => void;
+  actionSignIn?: () => void;
 }
