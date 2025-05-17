@@ -5,7 +5,7 @@ import { FormLogin } from "../molecules/FormLogin";
 import { useLoginForm } from "../../hooks/useLoginForm";
 import type { LoginSectionProps } from "../../types/loginTypes";
 
-export default function LoginSection({
+export default function Login({
     variant = "center",
     title = "Welcome Back",
     description = "Please sign in to continue",
@@ -39,7 +39,7 @@ export default function LoginSection({
                         <h2 className="text-2xl font-bold">{title}</h2>
                         <p className="mb-6 text-muted-foreground">{description}</p>
                     </div>
-                    <FormLogin onChange={handleChange} onSubmit={actionSignIn} values={formLogin} className="" actionForgotPassword={actionForgot} classNameForgot={classNameForgot} />
+                    <FormLogin onChange={handleChange} onSubmit={actionSignIn} values={formLogin} className="" actionForgotPassword={actionForgot} classNameForgot={classNameForgot}  />
                     <div className="text-center px-5">
                         {contentActionRegister ?? (
                             <p className="text-sm text-muted-foreground">

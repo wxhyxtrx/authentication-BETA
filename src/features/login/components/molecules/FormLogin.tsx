@@ -3,11 +3,11 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { cn } from '@/lib/utils'
 import type { TLoginFormProps } from '../../types/loginTypes'
 import { PasswordInput } from '../atoms/PasswordInput'
-import UsernameInput from '../atoms/UsernameInput'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginValidationSchema } from '../../schemas/defaultLoginSchema'
+import EmailInput from '../atoms/EmailInput'
 
 export const FormLogin = ({ onSubmit, values, onChange, className, schemaValidation, classNameForgot, actionForgotPassword }: TLoginFormProps) => {
     const form = useForm({
@@ -25,7 +25,7 @@ export const FormLogin = ({ onSubmit, values, onChange, className, schemaValidat
                         <FormItem>
                             <FormLabel className="text-sm">E-mail</FormLabel>
                             <FormControl>
-                                <UsernameInput {...field}
+                                <EmailInput {...field}
                                     type="email"
                                     placeholder="Please input your E-mail"
                                     className={` text-base ${form.formState.errors.email ? "border-red-500" : ""}`}
@@ -83,7 +83,7 @@ export const FormLogin = ({ onSubmit, values, onChange, className, schemaValidat
                         )}
                     />
                     <div>
-                        <div onClick={actionForgotPassword} className={cn("text-sm cursor-pointer hover:underline underline-offset-2 text-primary",classNameForgot)}>Forgot password?</div>
+                        <div onClick={actionForgotPassword} className={cn("text-sm cursor-pointer hover:underline underline-offset-2 text-primary", classNameForgot)}>Forgot password?</div>
                     </div>
                 </div>
 
