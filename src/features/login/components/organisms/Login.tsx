@@ -17,6 +17,7 @@ export default function Login({
     actionForgot,
     classNameForgot = "",
     actionSignIn = () => { },
+    customSchemaValidation,
 }: LoginSectionProps) {
     const { formLogin, handleChange } = useLoginForm()
     const isSplit = variant === "split-left" || variant === "split-right";
@@ -34,12 +35,12 @@ export default function Login({
             )}
 
             <div className={cn("p-10 w-full flex flex-col justify-center items-center", { "w-1/2": isSplit })}>
-                <div className="max-w-md w-full">
+                <div className="max-w-md w-full min-w-sm">
                     <div className={cn("w-full space-y-1.5 px-5", { "text-center": variant === "center" })}>
                         <h2 className="text-2xl font-bold">{title}</h2>
                         <p className="mb-6 text-muted-foreground">{description}</p>
                     </div>
-                    <FormLogin onChange={handleChange} onSubmit={actionSignIn} values={formLogin} className="" actionForgotPassword={actionForgot} classNameForgot={classNameForgot}  />
+                    <FormLogin onChange={handleChange} onSubmit={actionSignIn} values={formLogin} className="" actionForgotPassword={actionForgot} classNameForgot={classNameForgot} schemaValidation={customSchemaValidation} />
                     <div className="text-center px-5">
                         {contentActionRegister ?? (
                             <p className="text-sm text-muted-foreground">

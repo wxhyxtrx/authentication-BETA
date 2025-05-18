@@ -42,4 +42,5 @@ export interface LoginSectionProps {
   classNameForgot?: string;
   actionForgot?: () => void;
   actionSignIn?: () => void;
+  customSchemaValidation?: Schema<ILoginFormValues>;
 }
