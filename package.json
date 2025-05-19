@@ -1,8 +1,14 @@
 {
-  "name": "authentication",
-  "private": true,
+  "name": "auth-beta",
+  "private": false,
   "version": "0.0.0",
   "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -41,5 +47,20 @@
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.30.1",
     "vite": "^6.3.5"
-  }
+  },
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wxhyxtrx/authentication-BETA.git"
+  },
+  "keywords": [
+    "react",
+    "auth"
+  ],
+  "author": "wahyu tricahyo mulyo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wxhyxtrx/authentication-BETA/issues"
+  },
+  "homepage": "https://github.com/wxhyxtrx/authentication-BETA#readme"
 }
